@@ -1,6 +1,6 @@
 module.exports = async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
   }
 
   const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
@@ -8,8 +8,7 @@ module.exports = async function handler(req, res) {
 
   const data = req.body;
 
-  const message = 
-🔥 NEW MED SPA LEAD
+  const message = `🔥 NEW MED SPA LEAD
 
 👤 Name: ${data.name}
 🏢 Business: ${data.business}
@@ -21,11 +20,10 @@ module.exports = async function handler(req, res) {
 ${data.leads}
 
 ⚠️ Biggest Challenge:
-${data.challenge}
-;
+${data.challenge}`;
 
   const response = await fetch(
-    https://api.telegram.org/bot${BOT_TOKEN}/sendMessage,
+    `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,
     {
       method: "POST",
       headers: {
@@ -43,4 +41,4 @@ ${data.challenge}
   }
 
   return res.status(200).json({ success: true });
-}
+};
